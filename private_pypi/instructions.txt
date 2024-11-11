@@ -1,0 +1,32 @@
+# create a config file
+docker run -it --rm stevearc/pypicloud make-config
+
+# copy and save that config file
+
+# mount it 
+docker run -p 8080:8080 -v "C:/prive/med2/private_pypi/config.ini:/etc/pypicloud/config.ini" -v "C:/prive/med2/private_pypi/volumes/packages/:/var/lib/pypicloud/packages" -v "C:/prive/med2/private_pypi/volumes/other:/var/lib/pypicloud" stevearc/pypicloud
+
+docker run \
+	-p 8080:8080 \
+	-v "C:/prive/med2/private_pypi/config.ini:/etc/pypicloud/config.ini" \
+	-v "C:/prive/med2/private_pypi/volumes/packages/:/var/lib/pypicloud/packages" \
+	stevearc/pypicloud
+
+docker run \
+  -p 8080:8080 \
+  -v "C:/prive/med2/private_pypi/config.ini:/etc/pypicloud/config.ini" \
+  stevearc/pypicloud
+
+# check out
+http://localhost:8080/simple
+
+# config poetry
+poetry config repositories.my_pypi http://localhost:8080/simple/
+poetry config http-basic.my_pypi <username> <password>
+(poetry config http-basic.my_pypi mike mikepw)
+
+# push package to repo
+poetry publish --build --repository my_pypi
+
+
+

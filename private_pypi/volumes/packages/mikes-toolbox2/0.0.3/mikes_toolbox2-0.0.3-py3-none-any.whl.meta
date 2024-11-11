@@ -1,0 +1,1 @@
+{"requires_python": ">=3.9,<4.0", "hash_sha256": "15c75947c5557784431b25da18bde372158b3e4f0614de0acce0fc0bd18f721c", "hash_md5": "3c328ecd1153a903bda312e6b96c07c8", "uploader": "mike", "summary": "Testing publishing a package to pypi"}
